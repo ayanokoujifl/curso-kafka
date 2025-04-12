@@ -1,25 +1,23 @@
 package com.ayanokoujifl.strconsumer.listener;
 
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
+
+import com.ayanokoujifl.strconsumer.custom.StrConsumerCustomListener;
 
 @Component
 public class StrConsumerListener {
 
-	@KafkaListener(groupId = "group-1", topics = "str-topic", topicPartitions = {
-			@TopicPartition(topic = "str-topic", partitions = { "0" }) }, containerFactory = "strContainerFactory")
+	@StrConsumerCustomListener(groupId = "group-1")
 	public void listen(String message) {
 		System.out.println("LISTEN ::: Received message: " + message);
 	}
 
-	@KafkaListener(groupId = "group-1", topics = "str-topic", topicPartitions = {
-			@TopicPartition(topic = "str-topic", partitions = { "1" }) }, containerFactory = "strContainerFactory")
+	@StrConsumerCustomListener(groupId = "group-1")
 	public void log(String message) {
 		System.out.println("LOG ::: Received message: " + message);
 	}
 
-	@KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "strContainerFactory")
+	@StrConsumerCustomListener(groupId = "group-2")
 	public void history(String message) {
 		System.out.println("HISTORY ::: Received message: " + message);
 	}
