@@ -17,7 +17,7 @@ public class StrConsumerListener {
 		System.out.println("LOG ::: Received message: " + message);
 	}
 
-	@StrConsumerCustomListener(groupId = "group-2")
+	@StrConsumerCustomListener(groupId = "group-2", containerFactory = "validMessageContainerFactory")
 	public void history(String message) {
 		System.out.println("HISTORY ::: Received message: " + message);
 	}
