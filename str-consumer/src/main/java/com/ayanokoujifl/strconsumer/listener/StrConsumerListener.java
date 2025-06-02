@@ -10,6 +10,7 @@ public class StrConsumerListener {
 	@StrConsumerCustomListener(groupId = "group-1")
 	public void listen(String message) {
 		System.out.println("LISTEN ::: Received message: " + message);
+		throw new IllegalArgumentException("Simulated exception for testing error ");
 	}
 
 	@StrConsumerCustomListener(groupId = "group-1")
